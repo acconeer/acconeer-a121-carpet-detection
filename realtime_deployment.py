@@ -58,7 +58,6 @@ class Processor:
         # extract peak location
         distance_to_floor = estimate_distance(frame, self.sensor_config)
         if len(distance_to_floor) == 0:
-            print('Peak index is zero')
             return {"y_pred": np.nan}
 
         feature_distance_to_floor = distance_to_floor[0]

@@ -20,8 +20,7 @@ def main():
     args = a121.ExampleArgumentParser().parse_args()
     et.utils.config_logging(args)
 
-    client = a121.Client(**a121.get_client_args(args))
-    client.connect()
+    client = a121.Client.open()
 
     session_config = load_record('data/carpet_1.h5').session_config
     sensor_config = session_config.sensor_config
@@ -43,7 +42,7 @@ def main():
         pg_process.put_data(plot_Data)
 
     print("\nDisconnecting...")
-    client.disconnect()
+    client.close()
 
 
 class Processor:
